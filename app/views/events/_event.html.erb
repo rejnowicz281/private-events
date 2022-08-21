@@ -1,0 +1,21 @@
+<div class="event-card card m-5">
+    <h3 class="card-header text-center"> <%= link_to event.name, event, class: "text-decoration-none" %> </h3>
+    <div class="card-body">
+        <p class="card-text"> <%= event.description %> </p>
+    </div>
+
+    <div class="card-footer">
+        <div class="event-location m-1 border-bottom">
+            <p class="text-mutede">Location</p>
+            <h5 class="m-3"> <%= event.location %> </h5>
+        </div>
+        <div class="event-date m-1 border-bottom">
+            <p class="text-muted">Date</p>
+            <h5 class="m-3"> <%= event.date %> </h5>
+        </div>
+        <div class="event-host m-1">
+            <p class="text-muted">Host</p>
+            <h5 class="m-3"> <%= event.host.name %> </h5>
+        </div>
+    </div>
+</div>
