@@ -11,16 +11,21 @@
   </head>
 
   <body>
-    <div class="wrapper">
-      <aside>
-        <ul>
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
-          <li>4</li>
-        </ul>
+    <div class="wrapper m-3">
+      <aside class="ps-3 pe-3 text-center border-end">
+        <h1>Privateers</h1>
+        <nav class="nav flex-column">
+          <%= link_to "Homepage", root_path, class: "nav-link" %>
+          <%= link_to "Create Event", new_event_path, class: "nav-link" %>
+          <% if signed_in? %>
+            <%= link_to "Log out", destroy_user_session_path, class: "nav-link" %>
+          <% else %>
+            <%= link_to "Sign in", new_user_session_path, class: "nav-link" %>
+            <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %>
+          <% end %>
+        </nav>
       </aside>
-      <main>
+      <main class="ms-4">
         <%= yield %>
       </main>
     </div>
