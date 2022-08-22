@@ -1,7 +1,9 @@
-<div class="event-card card m-5">
+<div class="event-card card m-5
+    <%= "w-25" if controller.controller_name == "events" && controller.action_name == "index" %>
+">
     <h3 class="card-header text-center"> <%= link_to event.name, event, class: "text-decoration-none" %> </h3>
     <div class="card-body">
-        <p class="card-text"> <%= event.description %> </p>
+        <p class="card-text <%= "text-truncate" if controller.controller_name == "events" && controller.action_name == "index" %>"> <%= event.description %> </p>
     </div>
 
     <div class="card-footer">
