@@ -8,7 +8,7 @@
 
     <div class="card-footer">
         <div class="event-location m-1 border-bottom">
-            <p class="text-mutede">Location</p>
+            <p class="text-muted">Location</p>
             <h5 class="m-3"> <%= event.location %> </h5>
         </div>
         <div class="event-date m-1 border-bottom">
@@ -17,7 +17,7 @@
         </div>
         <div class="event-host m-1">
             <p class="text-muted">Host</p>
-            <h5 class="m-3"> <%= event.host.name %> </h5>
+            <h5 class="m-3"> <%= link_to event.host.name, event.host, class: "text-decoration-none" %> </h5>
         </div>
     </div>
 </div>
