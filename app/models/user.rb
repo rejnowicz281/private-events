@@ -8,4 +8,8 @@ class User < ApplicationRecord
 
   has_many :attendances, foreign_key: "attendee_id", dependent: :destroy
   has_many :attended_events, through: :attendances
+
+  validates :name, presence: true
+  validates :password, presence: true
+  validates :email, presence: true
 end
