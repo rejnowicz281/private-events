@@ -1,0 +1,6 @@
+<h1> <%= @user.name %>'s Posts </h1>
+<div class="user-events">
+    <% @user.events.each do |event| %>
+        <%= render "events/event", event: event %>
+    <% end %>
+</div>
