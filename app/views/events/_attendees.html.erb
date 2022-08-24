@@ -1,0 +1,8 @@
+<div class="attendees">
+    <h2>Current Attendees</h2>
+    <div class="list-group">
+        <% attendees.each do |attendee| %>
+            <%= link_to attendee.name, attendee, class: "list-group-item"%>
+        <% end %>
+    </div>
+</div>

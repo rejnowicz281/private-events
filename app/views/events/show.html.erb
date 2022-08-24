@@ -1,3 +1,5 @@
 <h1>Event <%= @event.id %></h1>
 
 <%= render "event", event: @event %>
+
+<%= render "attendees", attendees: @event.attendees %>
