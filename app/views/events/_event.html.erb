@@ -1,23 +1,22 @@
 <div class="event-card card m-5
-    <%= "w-25" if controller.controller_name == "events" && controller.action_name == "index" %>
-">
+    <%= "w-25" if (controller.controller_name == "events"  && controller.action_name == "index") || (controller.controller_name == "users"  && controller.action_name == "show") %> ">
     <h3 class="card-header text-center"> <%= link_to event.name, event, class: "text-decoration-none" %> </h3>
     <div class="card-body">
-        <p class="card-text <%= "text-truncate" if controller.controller_name == "events" && controller.action_name == "index" %>"> <%= event.description %> </p>
+        <p class="card-text <%= "text-truncate" if (controller.controller_name == "events"  && controller.action_name == "index") || (controller.controller_name == "users"  && controller.action_name == "show") %> "> <%= event.description %> </p>
     </div>
 
-    <div class="card-footer">
-        <div class="event-location m-1 border-bottom">
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">
             <p class="text-muted">Location</p>
             <h5 class="m-3"> <%= event.location %> </h5>
-        </div>
-        <div class="event-date m-1 border-bottom">
+        </li>
+        <li class="list-group-item">
             <p class="text-muted">Date</p>
             <h5 class="m-3"> <%= event.date %> </h5>
-        </div>
-        <div class="event-host m-1">
+        </li>
+        <li class="list-group-item">
             <p class="text-muted">Host</p>
             <h5 class="m-3"> <%= link_to event.host.name, event.host, class: "text-decoration-none" %> </h5>
-        </div>
-    </div>
+        </li>
+    </ul>
 </div>

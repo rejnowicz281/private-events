@@ -1,0 +1,5 @@
+<div class="container d-flex flex-wrap justify-content-center">
+    <% events.each do |event| %>
+        <%= render "events/event", event: event %>
+    <% end %>
+</div>
