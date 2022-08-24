@@ -1,4 +1,15 @@
 <h1>Homepage</h1>
-<h2 class="text-center m-4">Upcoming Events</h2>
+<div class="homepage-links text-center">
+    <a href="#upcoming_events" class="btn btn-secondary m-1">Upcoming Events</a>
+    <a href="#past_events" class="btn btn-secondary m-1">Past Events</a>
+</div>
 
-<%= render "events", events: @events %>
+<div class="upcoming-events">
+    <h1 class="text-center m-4" id="upcoming_events">Upcoming Events</h1>
+    <%= render "events", events: @events.upcoming %>
+</div>
+<hr>
+<div class="past-events">
+    <h1 class="text-center m-4" id="past_events">Past Events</h1>
+    <%= render "events", events: @events.past %>
+</div>
