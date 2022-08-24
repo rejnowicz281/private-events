@@ -4,4 +4,11 @@ class AttendancesController < ApplicationController
 
         redirect_to event_path(params[:event_id])
     end
+
+    def destroy
+        @attendance = current_user.attendances.find_by(attended_event_id: params[:event_id])
+
+        @attendance.destroy
+        redirect_to event_path(params[:event_id]), status: 303
+    end
 end

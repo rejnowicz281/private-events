@@ -1,3 +1,7 @@
 <div class="event-buttons">
-    <%= button_to "Attend", attendances_path(event_id: event.id), :method => :post, class: "btn btn-dark w-25" %>
+    <% if current_user.attended_events.include?(event) %>
+        <%= button_to "Remove Attendance", attendance_path(event_id: event.id), :method => :delete, class: "btn btn-dark w-25" %>
+    <% else %>
+        <%= button_to "Attend", attendances_path(event_id: event.id), :method => :post, class: "btn btn-dark w-25" %>
+    <% end %>
 </div>
