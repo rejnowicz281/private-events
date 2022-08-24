@@ -1,15 +1,16 @@
 <div class="event-buttons">
-    <div class="attendance-button">
-        <% if current_user != nil && current_user.attended_events.include?(event) %>
-            <%= button_to "Remove Attendance", attendance_path(event_id: event.id), :method => :delete, class: "btn btn-dark w-25" %>
-        <% else %>
-            <%= button_to "Attend", attendances_path(event_id: event.id), :method => :post, class: "btn btn-dark w-25" %>
-        <% end %>
-    </div>
     <% if current_user == event.host %>
         <div class="host-buttons m-3 d-flex justify-content-center">
             <%= link_to "Edit Event Details", edit_event_path, class: "btn btn-secondary m-1" %>
             <%= button_to "Cancel Event", event_path, :method => :delete, class: "btn btn-warning m-1" %>
+        </div>
+    <% else %>
+        <div class="attendance-button">
+            <% if current_user != nil && current_user.attended_events.include?(event) %>
+                <%= button_to "Remove Attendance", attendance_path(event_id: event.id), :method => :delete, class: "btn btn-dark w-25" %>
+            <% else %>
+                <%= button_to "Attend", attendances_path(event_id: event.id), :method => :post, class: "btn btn-dark w-25" %>
+            <% end %>
         </div>
     <% end %>
 </div>
