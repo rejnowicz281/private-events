@@ -1,4 +1,6 @@
 class AttendancesController < ApplicationController
+    before_action :require_login, only: [:create]
+
     def create
         @attendance = current_user.attendances.create(attended_event_id: params[:event_id])
 
