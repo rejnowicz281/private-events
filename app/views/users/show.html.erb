@@ -1,5 +1,11 @@
 <div class="profile-heading text-center">
-    <h1> <%= @user.name %>'s Profile </h1>
+    <h1>
+        <% if @user == current_user %>
+            Your (<%= @user.name %>) profile
+        <% else %>
+            <%= @user.name %>'s Profile
+        <% end %>
+    </h1>
     <% if @user == current_user %>
         <div class="edit-profile text-center">
             <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-primary" %>
