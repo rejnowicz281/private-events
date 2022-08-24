@@ -1,5 +1,8 @@
 <div class="attendees">
     <h2>Current Attendees</h2>
+    <% if attendees.empty? %>
+        <p class="text-muted">Be the first person to attend!</p>
+    <% end %>
     <div class="list-group">
         <% attendees.each do |attendee| %>
             <%= link_to attendee.name, attendee, class: "list-group-item"%>
