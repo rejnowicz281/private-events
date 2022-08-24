@@ -6,13 +6,27 @@
             <%= @user.name %>'s Profile
         <% end %>
     </h1>
-    <% if @user == current_user %>
-        <div class="edit-profile text-center">
-            <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-primary" %>
+        <div class="profile-links">
+            <% if @user == current_user %>
+                <div class="edit-profile text-center">
+                    <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-primary" %>
+                </div>
+            <% end %>
+            <a href="#created_events" class="btn btn-secondary m-1">Created events</a>
+            <a href="#attended_events" class="btn btn-secondary m-1">Attended events</a>
         </div>
-    <% end %>
 </div>
 
-<div class="user-events">
-    <%= render "events/events", events: @user.events %>
-</div>
+<% unless @user.events.empty? %>
+    <div class="user-events">
+        <div class="created-events">
+            <h1 class="mt-4 mb-0" id="created_events">Created Events</h1>
+            <%= render "events/events", events: @user.events %>
+        </div>
+        <hr>
+        <div class="attended-events">
+            <h1 id="attended_events">Attended Events</h1>
+            <%= render "events/events", events: @user.attended_events %>
+        </div>
+    </div>
+<% end %>
