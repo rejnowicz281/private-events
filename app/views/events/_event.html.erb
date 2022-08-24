@@ -19,4 +19,10 @@
             <h5 class="m-3"> <%= link_to event.host.name, event.host, class: "text-decoration-none" %> </h5>
         </li>
     </ul>
+
+    <% if controller.controller_name == "events" && controller.action_name == "show" %>
+        <div class="card-body">
+            <%= render "event_buttons", event: event %>
+        </div>
+    <% end %>
 </div>
