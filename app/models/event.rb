@@ -4,6 +4,8 @@ class Event < ApplicationRecord
     has_many :attendances, foreign_key: "attended_event_id", dependent: :destroy
     has_many :attendees, through: :attendances
 
+    has_many :invites, inverse_of: :event
+
     validates :name, presence: true
     validates :description, presence: true
     validates :location, presence: true
