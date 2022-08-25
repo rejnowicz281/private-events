@@ -6,6 +6,7 @@ class EventsController < ApplicationController
     end
 
     def show
+        @users = User.all_except(current_user)
         @event = Event.find(params[:id])
     end
 
