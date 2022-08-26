@@ -8,8 +8,15 @@
         <div class="attendance-button">
             <% if current_user != nil && current_user.attended_events.include?(event) %>
                 <%= button_to "Remove Attendance", attendance_path(event_id: event.id), :method => :delete, class: "btn btn-dark w-25" %>
+            <% elsif current_user != nil && current_user.invites_received.any? { |invite| invite.event_id == event.id} %>
+                <div class="d-flex justify-content-center">
+                    <%= button_to "Accept Invite (Attend)", attendances_path(event_id: event.id), :method => :post, class: "btn btn-dark m-2" %>
+                    <%= button_to "Ignore Invite", invite_path(event_id: event.id, invited_id: current_user.id), :method => :delete, class: "btn btn-danger m-2" %>
+                </div>
+            <% elsif current_user == nil %>
+                <p class="text-muted text-center"><%= link_to "Sign in", new_user_session_path, class:"text-decoration-none" %> to interact with this event</p>
             <% else %>
-                <%= button_to "Attend", attendances_path(event_id: event.id), :method => :post, class: "btn btn-dark w-25" %>
+                <p class="text-muted text-center">You need to be invited to interact with this event</p>
             <% end %>
         </div>
     <% end %>
