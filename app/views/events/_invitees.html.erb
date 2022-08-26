@@ -1,5 +1,9 @@
 <div class="invitees">
     <h2>Currently Invited (<%= invites.count %>) </h2>
+    <% if invites.empty? %>
+        <p class="text-muted">No invites yet!</p>
+    <% end %>
+
     <div class="list-group">
         <% invites.each do |invite| %>
             <%= link_to invite.invited.name, invite.invited, class: "list-group-item"%>
