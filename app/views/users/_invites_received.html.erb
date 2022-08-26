@@ -1,0 +1,13 @@
+<div class="invites-received mt-4">
+    <h6 class="text-warning">Pending invites: </h6>
+    <ul class="list-group">
+        <% user.invites_received.each do |invite| %>
+            <%= link_to invite.event, class: "text-decoration-none event-link" do %>
+                <li class="list-group-item miniature-event m-1">
+                    <p class="text-muted">Event</p>
+                    <h6 class="text-truncate"> <%= invite.event.name %></h6>
+                </li>
+            <% end %>
+        <% end %>
+    </ul>
+</div>

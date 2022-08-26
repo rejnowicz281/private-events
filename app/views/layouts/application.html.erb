@@ -25,6 +25,9 @@
             <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %>
           <% end %>
         </nav>
+        <% if signed_in? %>
+          <%= render "users/invites_received", user: current_user %>
+        <% end %>
       </aside>
       <main class="ms-4 mb-4">
         <div class="container-fluid">
