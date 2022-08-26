@@ -6,14 +6,18 @@
             <%= @user.name %>'s Profile
         <% end %>
     </h1>
-        <div class="profile-links">
+        <div class="profile-menu">
             <% if @user == current_user %>
                 <div class="edit-profile text-center">
                     <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-primary" %>
                 </div>
             <% end %>
-            <a href="#created_events" class="btn btn-secondary m-1">Created events</a>
-            <a href="#attended_events" class="btn btn-secondary m-1">Attended events</a>
+            <% if @user.events.empty? %>
+                <p class="text-muted m-2">User events will be displayed here.</p>
+            <% else %>
+                <a href="#created_events" class="btn btn-secondary m-1">Created events</a>
+                <a href="#attended_events" class="btn btn-secondary m-1">Attended events</a>
+            <% end %>
         </div>
 </div>
 
