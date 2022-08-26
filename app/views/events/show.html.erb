@@ -1,13 +1,15 @@
 <h1>Event <%= @event.id %></h1>
 
-<% if current_user == @event.host %>
+<% if current_user == @event.host && @event.date >= DateTime.now %>
     <%= render "event", event: @event %>
     <%= render "invite_users_tab", users: @users, event: @event %>
 <% else %>
     <%= render "event", event: @event %>
 <% end %>
 
-<div class="event-users d-flex justify-content-evenly">
-    <%= render "attendees", attendees: @event.attendees %>
-    <%= render "invitees", invites: @event.invites %>
-</div>
+<% unless @event.date < DateTime.now %>
+    <div class="event-users d-flex justify-content-evenly">
+        <%= render "attendees", attendees: @event.attendees %>
+        <%= render "invitees", invites: @event.invites %>
+    </div>
+<% end %>

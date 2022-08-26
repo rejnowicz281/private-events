@@ -1,19 +1,25 @@
 <div class="event-buttons">
     <% if current_user == event.host %>
         <div class="host-buttons m-3 d-flex justify-content-center">
-            <%= link_to "Edit Event Details", edit_event_path, class: "btn btn-secondary m-1" %>
-            <%= button_to "Delete Event", event_path, :method => :delete, class: "btn btn-warning m-1" %>
+            <% if event.date < DateTime.now %>
+                <%= button_to "Delete Event", event_path, :method => :delete, class: "btn btn-warning m-1" %>
+            <% else %>
+                <%= button_to "Delete Event", event_path, :method => :delete, class: "btn btn-warning m-1" %>
+                <%= link_to "Edit Event Details", edit_event_path, class: "btn btn-secondary m-1" %>
+            <% end %>
         </div>
     <% else %>
         <div class="attendance-button">
-            <% if current_user != nil && current_user.attended_events.include?(event) %>
+            <% if event.date < DateTime.now %>
+                <p class="text-muted text-center">This event has expired.</p>
+            <% elsif current_user != nil && current_user.attended_events.include?(event) %>
                 <%= button_to "Cancel Attendance", attendance_path(event_id: event.id), :method => :delete, class: "btn btn-dark w-25" %>
             <% elsif current_user != nil && current_user.invites_received.any? { |invite| invite.event_id == event.id} %>
                 <div class="d-flex justify-content-center">
                     <%= button_to "Accept Invite (Attend)", attendances_path(event_id: event.id), :method => :post, class: "btn btn-dark m-2" %>
                     <%= button_to "Ignore Invite", invite_path(event_id: event.id, invited_id: current_user.id), :method => :delete, class: "btn btn-danger m-2" %>
                 </div>
-            <% elsif current_user == nil %>
+            <% elsif current_user == nil%>
                 <p class="text-muted text-center"><%= link_to "Sign in", new_user_session_path, class:"text-decoration-none" %> to interact with this event</p>
             <% else %>
                 <p class="text-muted text-center">You need to be invited to interact with this event</p>
