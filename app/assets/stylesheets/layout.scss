@@ -32,3 +32,9 @@ h1{
 .miniature-event{
     max-width: 9em;
 }
+
+.invites-received .list-group{
+    overflow: auto;
+    height: 6rem;
+    width: 100%;
+}
