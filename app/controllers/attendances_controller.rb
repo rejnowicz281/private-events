@@ -3,6 +3,9 @@ class AttendancesController < ApplicationController
 
     def create
         @attendance = current_user.attendances.create(attended_event_id: params[:event_id])
+        invite = current_user.invites_received.find_by(event_id: params[:event_id])
+
+        invite.destroy
 
         redirect_to event_path(params[:event_id])
     end
