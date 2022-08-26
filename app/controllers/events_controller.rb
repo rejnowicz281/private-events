@@ -33,7 +33,7 @@ class EventsController < ApplicationController
         @event = Event.find(params[:id])
 
         if @event.update(event_params)
-            flash[:success] = "Successfully deleted Event."
+            flash[:success] = "Successfully updated Event."
             redirect_to @event
         else
             render :edit, status: :unprocessable_entity
@@ -45,7 +45,7 @@ class EventsController < ApplicationController
 
         @event.destroy
 
-        flash[:success] = "Successfully cancelled Event."
+        flash[:success] = "Successfully deleted Event."
         redirect_to root_path, status: 303
     end
 
