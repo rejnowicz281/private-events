@@ -10,7 +10,6 @@ main{
 
 aside{
     flex: 0 0 10%;
-    max-width: 40%;
 }
 
 .wrapper{
@@ -28,4 +27,8 @@ h1{
 
 .invite-users-tab .list-group{
     overflow: auto;
+}
+
+.miniature-event{
+    max-width: 9em;
 }
