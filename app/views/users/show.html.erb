@@ -12,7 +12,7 @@
                     <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-primary" %>
                 </div>
             <% end %>
-            <% if @user.events.empty? %>
+            <% if @user.events.empty? && @user.attended_events.empty? %>
                 <p class="text-muted m-2">User events will be displayed here.</p>
             <% else %>
                 <a href="#created_events" class="btn btn-secondary m-1">Created events</a>
@@ -21,7 +21,7 @@
         </div>
 </div>
 
-<% unless @user.events.empty? %>
+<% unless @user.events.empty? && @user.attended_events.empty? %>
     <div class="user-events">
         <div class="created-events">
             <h1 class="mt-4 mb-0" id="created_events">Created Events</h1>
