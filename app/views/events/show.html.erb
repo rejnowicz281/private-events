@@ -1,10 +1,8 @@
 <h1>Event <%= @event.id %></h1>
 
 <% if current_user == @event.host %>
-    <div class="d-flex justify-content-center">
-        <%= render "event", event: @event %>
-        <%= render "invite_users_tab", users: @users, event: @event %>
-    </div>
+    <%= render "event", event: @event %>
+    <%= render "invite_users_tab", users: @users, event: @event %>
 <% else %>
     <%= render "event", event: @event %>
 <% end %>

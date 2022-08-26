@@ -1,16 +1,18 @@
-<div class="card m-5">
-    <h5 class="card-header text-center">Manage invitations</h5>
-
-    <ul class="list-group list-group-flush">
-        <% users.each do |user| %>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                <div> <%= link_to user.name, user, class: "text-decoration-none" %> </div>
-                <% if @event.invites.find_by(event_id: event.id, invited_id: user.id) %>
-                    <%= button_to "Cancel Invite", invite_path(event_id: event.id, invited_id: user.id), :method => :delete, class: "btn btn-danger btn-sm ms-3" %>
-                <% else %>    
-                    <%= button_to "Invite", invites_path(event_id: event.id, invited_id: user.id), :method => :post, class: "btn btn-success btn-sm ms-3" %>
-                <% end %>
-            </li>
-        <% end %>
-    </ul>
+<div class="d-flex justify-content-center">
+    <div class="invite-users-tab card mb-5 w-50">
+        <h4 class="card-header text-center">Manage invitations</h4>
+    
+        <ul class="list-group list-group-flush">
+            <% users.each do |user| %>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <div class="text-truncate"> <%= link_to user.name, user, class: "text-decoration-none" %> </div>
+                    <% if @event.invites.find_by(event_id: event.id, invited_id: user.id) %>
+                        <%= button_to "Cancel Invite", invite_path(event_id: event.id, invited_id: user.id), :method => :delete, class: "btn btn-danger btn-sm ms-1" %>
+                    <% else %>
+                        <%= button_to "Invite", invites_path(event_id: event.id, invited_id: user.id), :method => :post, class: "btn btn-success btn-sm ms-1" %>
+                    <% end %>
+                </li>
+            <% end %>
+        </ul>
+    </div>
 </div>

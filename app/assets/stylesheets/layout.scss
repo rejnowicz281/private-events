@@ -20,3 +20,11 @@ aside{
 h1{
     text-align: center;
 }
+
+.invite-users-tab{
+    max-height: 10rem;
+}
+
+.invite-users-tab .list-group{
+    overflow: auto;
+}
