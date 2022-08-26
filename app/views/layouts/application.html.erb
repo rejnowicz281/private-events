@@ -11,6 +11,16 @@
   </head>
 
   <body>
+    <% unless flash.empty? %>
+      <div class="flash-container bg-light border">
+        <% flash.each do |type, msg| %>
+          <div class="flash">
+            <p class="text-muted"><%= type.capitalize %></p>
+            <h6><%= msg %></h6>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
     <div class="wrapper m-3 me-0">
       <aside class="ps-3 pe-3 border-end">
         <h1>Privateers</h1>
