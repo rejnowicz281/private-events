@@ -2,7 +2,7 @@
     <% if current_user == event.host %>
         <div class="host-buttons m-3 d-flex justify-content-center">
             <%= link_to "Edit Event Details", edit_event_path, class: "btn btn-secondary m-1" %>
-            <%= button_to "Cancel Event", event_path, :method => :delete, class: "btn btn-warning m-1" %>
+            <%= button_to "Delete Event", event_path, :method => :delete, class: "btn btn-warning m-1" %>
         </div>
     <% else %>
         <div class="attendance-button">
