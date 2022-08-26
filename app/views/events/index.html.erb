@@ -1,15 +1,19 @@
 <h1>Homepage</h1>
-<div class="homepage-links text-center">
-    <a href="#upcoming_events" class="btn btn-secondary m-1">Upcoming Events</a>
-    <a href="#past_events" class="btn btn-secondary m-1">Past Events</a>
-</div>
+<% unless @events.empty? %>
+    <div class="homepage-links text-center">
+        <a href="#upcoming_events" class="btn btn-secondary m-1">Upcoming Events</a>
+        <a href="#past_events" class="btn btn-secondary m-1">Past Events</a>
+    </div>
 
-<div class="upcoming-events">
-    <h1 class="text-center m-4" id="upcoming_events">Upcoming Events</h1>
-    <%= render "events", events: @events.upcoming %>
-</div>
-<hr>
-<div class="past-events">
-    <h1 class="text-center m-4" id="past_events">Past Events</h1>
-    <%= render "events", events: @events.past %>
-</div>
+    <div class="upcoming-events">
+        <h1 class="text-center m-4" id="upcoming_events">Upcoming Events</h1>
+        <%= render "events", events: @events.upcoming %>
+    </div>
+    <hr>
+    <div class="past-events">
+        <h1 class="text-center m-4" id="past_events">Past Events</h1>
+        <%= render "events", events: @events.past %>
+    </div>
+<% else %>
+    <p class="text-muted text-center">Any created events will be available here.</p>
+<% end %>
