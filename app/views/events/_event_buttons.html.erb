@@ -7,7 +7,7 @@
     <% else %>
         <div class="attendance-button">
             <% if current_user != nil && current_user.attended_events.include?(event) %>
-                <%= button_to "Remove Attendance", attendance_path(event_id: event.id), :method => :delete, class: "btn btn-dark w-25" %>
+                <%= button_to "Cancel Attendance", attendance_path(event_id: event.id), :method => :delete, class: "btn btn-dark w-25" %>
             <% elsif current_user != nil && current_user.invites_received.any? { |invite| invite.event_id == event.id} %>
                 <div class="d-flex justify-content-center">
                     <%= button_to "Accept Invite (Attend)", attendances_path(event_id: event.id), :method => :post, class: "btn btn-dark m-2" %>
