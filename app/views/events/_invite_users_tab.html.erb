@@ -4,7 +4,7 @@
     
         <ul class="list-group list-group-flush">
             <% users.each do |user| %>
-                <li class="list-group-item d-flex justify-content-between align-items-center">
+                <li class="list-group-item d-flex justify-content-between align-items-center <%= @event.invites.find_by(event_id: event.id, invited_id: user.id) ? "order-1" : "order-2" %> ">
                     <div class="text-truncate"> <%= link_to user.name, user, class: "text-decoration-none" %> </div>
                     <% if @event.invites.find_by(event_id: event.id, invited_id: user.id) %>
                         <%= button_to "Cancel Invite", invite_path(event_id: event.id, invited_id: user.id), :method => :delete, class: "btn btn-danger btn-sm ms-1" %>
