@@ -7,6 +7,7 @@ class AttendancesController < ApplicationController
 
         invite.destroy
 
+        flash[:success] = "Successfully accepted Invite."
         redirect_to event_path(params[:event_id])
     end
 
@@ -14,6 +15,8 @@ class AttendancesController < ApplicationController
         @attendance = current_user.attendances.find_by(attended_event_id: params[:event_id])
 
         @attendance.destroy
+
+        flash[:success] = "Successfully cancelled Attendance."
         redirect_to event_path(params[:event_id]), status: 303
     end
 end
