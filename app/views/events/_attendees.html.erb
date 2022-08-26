@@ -1,7 +1,7 @@
 <div class="attendees">
     <h2>Current Attendees (<%= attendees.count %>) </h2>
     <% if attendees.empty? %>
-        <p class="text-muted">Be the first person to attend!</p>
+        <p class="text-muted">No attendees yet!</p>
     <% end %>
     <div class="list-group">
         <% attendees.each do |attendee| %>
